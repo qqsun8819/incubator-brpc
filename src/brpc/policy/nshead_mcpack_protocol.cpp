@@ -16,7 +16,7 @@
 
 #include <google/protobuf/descriptor.h>         // MethodDescriptor
 #include <google/protobuf/message.h>            // Message
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 
 #include "butil/time.h"
 #include "butil/iobuf.h"                        // butil::IOBuf

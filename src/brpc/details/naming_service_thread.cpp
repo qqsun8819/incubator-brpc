@@ -16,7 +16,7 @@
 
 #include <set>
 #include <pthread.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bthread/butex.h"
 #include "butil/scoped_lock.h"
 #include "butil/logging.h"

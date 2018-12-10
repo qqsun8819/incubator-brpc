@@ -20,7 +20,7 @@
 #define BTHREAD_ALLOCATE_STACK_H
 
 #include <assert.h>
-#include <gflags/gflags.h>          // DECLARE_int32
+#include "gflags/gflags.h"          // DECLARE_int32
 #include "bthread/types.h"
 #include "bthread/context.h"        // bthread_fcontext_t
 #include "butil/object_pool.h"

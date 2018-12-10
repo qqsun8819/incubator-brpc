@@ -16,7 +16,7 @@
 
 #include <deque>
 #include <vector>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/scoped_lock.h"
 #ifdef BAIDU_INTERNAL
 #include "butil/comlog_sink.h"

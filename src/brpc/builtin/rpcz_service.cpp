@@ -16,7 +16,7 @@
 
 #include <ostream>
 #include <iomanip>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/string_printf.h"
 #include "butil/string_splitter.h"
 #include "butil/macros.h"

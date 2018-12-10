@@ -17,7 +17,7 @@
 #ifndef BRPC_RPC_DUMP_H
 #define BRPC_RPC_DUMP_H
 
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 #include "butil/iobuf.h"                            // IOBuf
 #include "butil/files/file_path.h"                  // FilePath
 #include "bvar/collector.h"

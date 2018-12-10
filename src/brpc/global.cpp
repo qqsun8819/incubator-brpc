@@ -16,7 +16,7 @@
 
 #include <openssl/ssl.h>
 #include <openssl/conf.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <fcntl.h>                               // O_RDONLY
 #include <signal.h>
 

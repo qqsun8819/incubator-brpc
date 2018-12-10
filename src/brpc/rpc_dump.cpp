@@ -14,7 +14,7 @@
 
 // Authors: Ge,Jun (gejun@baidu.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <fcntl.h>                    // O_CREAT
 #include "butil/file_util.h"
 #include "butil/raw_pack.h"

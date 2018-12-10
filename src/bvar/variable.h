@@ -21,7 +21,7 @@
 #include <ostream>                     // std::ostream
 #include <string>                      // std::string
 #include <vector>                      // std::vector
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 #include "butil/macros.h"               // DISALLOW_COPY_AND_ASSIGN
 #include "butil/strings/string_piece.h" // butil::StringPiece
 

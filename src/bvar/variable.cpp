@@ -19,7 +19,7 @@
 #include <set>                                  // std::set
 #include <fstream>                              // std::ifstream
 #include <sstream>                              // std::ostringstream
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/macros.h"                        // BAIDU_CASSERT
 #include "butil/containers/flat_map.h"           // butil::FlatMap
 #include "butil/scoped_lock.h"                   // BAIDU_SCOPE_LOCK

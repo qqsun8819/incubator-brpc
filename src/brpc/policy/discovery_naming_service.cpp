@@ -14,7 +14,7 @@
 
 // Authors: Jiashun Zhu(zhujiashun@bilibili.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/third_party/rapidjson/document.h"
 #include "butil/string_printf.h"
 #include "brpc/channel.h"

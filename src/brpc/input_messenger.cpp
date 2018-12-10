@@ -14,7 +14,7 @@
 
 // Authors: Ge,Jun (gejun@baidu.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/fd_guard.h"                      // fd_guard
 #include "butil/logging.h"                       // CHECK
 #include "butil/time.h"                          // cpuwide_time_us

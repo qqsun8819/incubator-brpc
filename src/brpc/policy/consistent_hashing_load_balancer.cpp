@@ -15,7 +15,7 @@
 // Authors: Zhangyi Chen (chenzhangyi01@baidu.com)
 
 #include <algorithm>                                           // std::set_union
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/containers/flat_map.h"
 #include "butil/errno.h"
 #include "brpc/socket.h"

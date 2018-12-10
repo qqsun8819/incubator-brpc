@@ -21,7 +21,7 @@
 #include <arpa/inet.h>                              // inet_aton
 #include <fcntl.h>                                  // O_CREAT
 #include <sys/stat.h>                               // mkdir
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <google/protobuf/descriptor.h>             // ServiceDescriptor
 #include "idl_options.pb.h"                         // option(idl_support)
 #include "bthread/unstable.h"                       // bthread_keytable_pool_init

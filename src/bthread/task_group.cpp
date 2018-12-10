@@ -18,7 +18,7 @@
 
 #include <sys/types.h>
 #include <stddef.h>                         // size_t
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/compat.h"                   // OS_MACOSX
 #include "butil/macros.h"                   // ARRAY_SIZE
 #include "butil/scoped_lock.h"              // BAIDU_SCOPED_LOCK

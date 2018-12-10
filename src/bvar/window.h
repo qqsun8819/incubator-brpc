@@ -20,7 +20,7 @@
 
 #include <limits>                                 // std::numeric_limits
 #include <math.h>                                 // round
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 #include "butil/logging.h"                         // LOG
 #include "bvar/detail/sampler.h"
 #include "bvar/detail/series.h"

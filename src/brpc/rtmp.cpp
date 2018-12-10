@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 //          Jiashun Zhu (zhujiashun@baidu.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <google/protobuf/io/zero_copy_stream_impl_lite.h> // StringOutputStream
 #include "bthread/bthread.h"                      // bthread_id_xx
 #include "bthread/unstable.h"                     // bthread_timer_del

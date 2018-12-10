@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 //          Rujie Jiang (jiangrujie@baidu.com)
 
-#include <gflags/gflags.h>                            // DEFINE_int32
+#include "gflags/gflags.h"                            // DEFINE_int32
 #include "butil/compat.h"
 #include "butil/fd_utility.h"                         // make_close_on_exec
 #include "butil/logging.h"                            // LOG

@@ -16,7 +16,7 @@
 // Date: Mon Dec 14 19:12:30 CST 2015
 
 #include <map>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/memory/singleton_on_pthread_once.h"
 #include "bvar/bvar.h"
 #include "bvar/collector.h"

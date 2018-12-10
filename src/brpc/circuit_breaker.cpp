@@ -15,7 +15,7 @@
 // Authors: Lei He (helei@qiyi.com)
 
 #include <cmath>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <butil/time.h>
 #include "brpc/circuit_breaker.h"
 

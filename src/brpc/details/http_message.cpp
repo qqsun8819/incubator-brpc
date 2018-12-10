@@ -19,7 +19,7 @@
 
 #include <string>                               // std::string
 #include <iostream>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/macros.h"
 #include "butil/logging.h"                       // LOG
 #include "butil/scoped_lock.h"

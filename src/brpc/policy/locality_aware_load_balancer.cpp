@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 
 #include <limits>                                            // numeric_limits
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/time.h"                                       // gettimeofday_us
 #include "butil/fast_rand.h"
 #include "brpc/log.h"

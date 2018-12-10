@@ -26,7 +26,7 @@ const uint64_t PB_TOTAL_BYETS_LIMITS =
 #undef private
 
 #include <google/protobuf/io/zero_copy_stream_impl_lite.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/logging.h"
 #include "butil/memory/singleton_on_pthread_once.h"
 #include "brpc/protocol.h"

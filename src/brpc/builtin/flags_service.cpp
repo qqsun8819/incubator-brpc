@@ -17,7 +17,7 @@
 #include <ostream>
 #include <vector>                           // std::vector
 #include <set>
-#include <gflags/gflags.h>                  // GetAllFlags
+#include "gflags/gflags.h"                  // GetAllFlags
                                             // CommandLineFlagInfo
 #include "butil/string_printf.h"
 #include "butil/string_splitter.h"

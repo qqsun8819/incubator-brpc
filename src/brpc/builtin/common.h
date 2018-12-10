@@ -18,7 +18,7 @@
 #define BRPC_BUILTIN_COMMON_H
 
 #include <vector>                           // std::vector
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 #include "butil/endpoint.h"
 #include "brpc/http_header.h"
 

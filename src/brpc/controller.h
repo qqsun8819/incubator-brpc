@@ -20,7 +20,7 @@
 // To brpc developers: This is a header included by user, don't depend
 // on internal structures, use opaque pointers instead.
 
-#include <gflags/gflags.h>                     // Users often need gflags
+#include "gflags/gflags.h"                     // Users often need gflags
 #include "butil/intrusive_ptr.hpp"             // butil::intrusive_ptr
 #include "bthread/errno.h"                     // Redefine errno
 #include "butil/endpoint.h"                    // butil::EndPoint

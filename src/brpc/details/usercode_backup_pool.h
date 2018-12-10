@@ -19,7 +19,7 @@
 
 #include "butil/atomicops.h"
 #include "bthread/bthread.h"
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 
 
 namespace brpc {

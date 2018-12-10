@@ -14,7 +14,7 @@
 
 // Authors: Ge,Jun (gejun@baidu.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <stdio.h>                                      // getline
 #include <string>                                       // std::string
 #include <set>                                          // std::set

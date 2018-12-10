@@ -19,7 +19,7 @@
 #include <signal.h>
 #include <openssl/md5.h>  
 #include <google/protobuf/descriptor.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bthread/bthread.h"
 #include "butil/build_config.h"    // OS_MACOSX
 #include "butil/string_printf.h"

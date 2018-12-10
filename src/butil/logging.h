@@ -72,7 +72,7 @@
 #endif // BAIDU_INTERNAL
 
 #include <inttypes.h>
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 
 #include "butil/base_export.h"
 #include "butil/basictypes.h"

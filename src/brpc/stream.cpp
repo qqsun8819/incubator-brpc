@@ -16,7 +16,7 @@
 
 #include "brpc/stream.h"
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/time.h"
 #include "butil/object_pool.h"
 #include "butil/unique_ptr.h"

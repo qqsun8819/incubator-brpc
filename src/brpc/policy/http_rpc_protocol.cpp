@@ -16,7 +16,7 @@
 //          Ge,Jun (gejun@baidu.com)
 
 #include <google/protobuf/descriptor.h>             // MethodDescriptor
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <json2pb/pb_to_json.h>                    // ProtoMessageToJson
 #include <json2pb/json_to_pb.h>                    // JsonToProtoMessage
 

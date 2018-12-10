@@ -23,7 +23,7 @@
 #include <string.h>                            // strcpy
 #include <stdio.h>                             // snprintf
 #include <stdlib.h>                            // strtol
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/fd_guard.h"                    // fd_guard
 #include "butil/endpoint.h"                    // ip_t
 #include "butil/logging.h"

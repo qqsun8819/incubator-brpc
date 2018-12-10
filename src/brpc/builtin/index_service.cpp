@@ -14,7 +14,7 @@
 
 // Authors: Ge,Jun (gejun@baidu.com)
 
-#include <gflags/gflags.h>                  // DECLARE_xxx
+#include "gflags/gflags.h"                  // DECLARE_xxx
 #include <google/protobuf/descriptor.h>
 #include "butil/time.h"                      // gettimeofday_us
 #include "brpc/server.h"                    // Server

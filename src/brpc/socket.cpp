@@ -20,7 +20,7 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #include <netinet/tcp.h>                         // getsockopt
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bthread/unstable.h"                    // bthread_timer_del
 #include "butil/fd_utility.h"                     // make_non_blocking
 #include "butil/fd_guard.h"                       // fd_guard

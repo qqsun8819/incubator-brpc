@@ -14,7 +14,7 @@
 
 // Authors: Yaofu Zhang (zhangyaofu@qiyi.com)
 
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include <string>                                       // std::string
 #include <set>                                          // std::set
 #include "butil/string_printf.h"

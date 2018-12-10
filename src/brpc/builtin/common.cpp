@@ -17,7 +17,7 @@
 #include <iomanip>
 #include <sys/time.h>
 #include <fcntl.h>                           // O_RDONLY
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/logging.h"
 #include "butil/fd_guard.h"                  // fd_guard
 #include "butil/file_util.h"                 // butil::FilePath

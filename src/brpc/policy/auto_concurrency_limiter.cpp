@@ -15,7 +15,7 @@
 // Authors: Lei He (helei@qiyi.com)
 
 #include <cmath>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "brpc/errno.pb.h"
 #include "brpc/policy/auto_concurrency_limiter.h"
 

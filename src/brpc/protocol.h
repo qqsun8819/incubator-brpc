@@ -23,7 +23,7 @@
 
 #include <vector>                                  // std::vector
 #include <stdint.h>                                // uint64_t
-#include <gflags/gflags_declare.h>                 // DECLARE_xxx
+#include "gflags/gflags_declare.h"                 // DECLARE_xxx
 #include "butil/endpoint.h"                         // butil::EndPoint
 #include "butil/iobuf.h"
 #include "butil/logging.h"

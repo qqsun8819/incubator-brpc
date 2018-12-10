@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 
 #include <unistd.h>                    // write, _exit
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/macros.h"
 #include "brpc/reloadable_flags.h"
 

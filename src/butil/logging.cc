@@ -85,7 +85,7 @@ typedef pthread_mutex_t* MutexHandle;
 #include <vector>
 #include <deque>
 #include <limits>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/atomicops.h"
 #include "butil/thread_local.h"
 #include "butil/scoped_lock.h"                        // BAIDU_SCOPED_LOCK

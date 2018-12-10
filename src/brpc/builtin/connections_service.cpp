@@ -17,7 +17,7 @@
 #include <ostream>
 #include <iomanip>
 #include <netinet/tcp.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "brpc/closure_guard.h"        // ClosureGuard
 #include "brpc/controller.h"           // Controller
 #include "brpc/socket_map.h"           // SocketMapList

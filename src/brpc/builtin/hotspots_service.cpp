@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 
 #include <stdio.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/files/file_enumerator.h"
 #include "butil/file_util.h"                     // butil::FilePath
 #include "butil/popen.h"                         // butil::read_command_output

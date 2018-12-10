@@ -19,7 +19,7 @@
 #define  BVAR_VECTOR_H
 
 #include <ostream>
-#include <gflags/gflags_declare.h>
+#include "gflags/gflags_declare.h"
 
 namespace bvar {
 

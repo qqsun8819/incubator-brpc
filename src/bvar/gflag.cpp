@@ -16,7 +16,7 @@
 // Date: Sun Aug  9 12:26:03 CST 2015
 
 #include <stdlib.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bvar/gflag.h"
 
 namespace bvar {

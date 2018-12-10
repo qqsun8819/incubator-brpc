@@ -15,7 +15,7 @@
 // Authors: Ge,Jun (gejun@baidu.com)
 
 #include <map>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bthread/bthread.h"                         // bthread_id_xx
 #include "brpc/socket.h"                             // SocketUser
 #include "brpc/load_balancer.h"                      // LoadBalancer

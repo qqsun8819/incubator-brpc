@@ -26,7 +26,7 @@
 #include "bthread/task_group.h"           // TaskGroup
 #include "bthread/task_control.h"
 #include "bthread/timer_thread.h"         // global_timer_thread
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "bthread/log.h"
 
 DEFINE_int32(task_group_delete_delay, 1,

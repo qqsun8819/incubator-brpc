@@ -18,7 +18,7 @@
 
 #include <inttypes.h>
 #include <google/protobuf/descriptor.h>
-#include <gflags/gflags.h>
+#include "gflags/gflags.h"
 #include "butil/time.h"                              // milliseconds_from_now
 #include "butil/logging.h"
 #include "butil/third_party/murmurhash3/murmurhash3.h"
