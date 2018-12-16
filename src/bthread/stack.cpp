@@ -72,7 +72,7 @@ int allocate_stack_storage(StackStorage* s, int stacksize_in, int guardsize_in) 
         s->bottom = (char*)mem + stacksize;
         s->stacksize = stacksize;
         s->guardsize = 0;
-        if (RunningOnValgrind()) {
+        if (RunningOnValgrind2()) {
             s->valgrind_stack_id = VALGRIND_STACK_REGISTER(
                 s->bottom, (char*)s->bottom - stacksize);
         } else {
@@ -117,7 +117,7 @@ int allocate_stack_storage(StackStorage* s, int stacksize_in, int guardsize_in) 
         s->bottom = (char*)mem + memsize;
         s->stacksize = stacksize;
         s->guardsize = guardsize;
-        if (RunningOnValgrind()) {
+        if (RunningOnValgrind2()) {
             s->valgrind_stack_id = VALGRIND_STACK_REGISTER(
                 s->bottom, (char*)s->bottom - stacksize);
         } else {
@@ -128,7 +128,7 @@ int allocate_stack_storage(StackStorage* s, int stacksize_in, int guardsize_in) 
 }
 
 void deallocate_stack_storage(StackStorage* s) {
-    if (RunningOnValgrind()) {
+    if (RunningOnValgrind2()) {
         VALGRIND_STACK_DEREGISTER(s->valgrind_stack_id);
     }
     const int memsize = s->stacksize + s->guardsize;
