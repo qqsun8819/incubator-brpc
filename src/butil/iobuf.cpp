@@ -181,6 +181,7 @@ size_t IOBuf::new_bigview_count() {
 }
 
 const uint16_t IOBUF_BLOCK_FLAGS_USER_DATA = 0x1;
+const uint16_t IOBUF_BLOCK_FLAGS_USER_DATA2 = 0x2;
 typedef void (*UserDataDeleter)(void*);
 
 struct UserDataExtension {
@@ -198,6 +199,7 @@ struct IOBuf::Block {
     // When flag & IOBUF_BLOCK_FLAGS_USER_DATA is non-0, data points to the user data and
     // the deleter is put in UserDataExtension at `(char*)this+sizeof(Block)'
     char* data;
+    void* user_data;
         
     Block(char* data_in, uint32_t data_size)
         : nshared(1)
@@ -222,6 +224,20 @@ struct IOBuf::Block {
         , data(data_in) {
         get_user_data_extension()->deleter = deleter;
     }
+
+    Block(char* data_in, uint32_t data_size, UserDataDeleter deleter, void* user_data_in)
+        : nshared(1)
+        , flags(IOBUF_BLOCK_FLAGS_USER_DATA2)
+        , abi_check(0)
+        , size(data_size)
+        , cap(data_size)
+        , portal_next(NULL)
+        , data(data_in)
+        , user_data(user_data_in) {
+        get_user_data_extension()->deleter = deleter;
+    }
+
+ 
 
     // Undefined behavior when (flags & IOBUF_BLOCK_FLAGS_USER_DATA) is 0.
     UserDataExtension* get_user_data_extension() {
@@ -255,6 +271,10 @@ struct IOBuf::Block {
                 iobuf::blockmem_deallocate(this);
             } else if (flags & IOBUF_BLOCK_FLAGS_USER_DATA) {
                 get_user_data_extension()->deleter(data);
+                this->~Block();
+                free(this);
+            } else if (flags & IOBUF_BLOCK_FLAGS_USER_DATA2) {
+                get_user_data_extension()->deleter(user_data);
                 this->~Block();
                 free(this);
             }
@@ -1230,6 +1250,25 @@ int IOBuf::append_user_data(void* data, size_t size, void (*deleter)(void*)) {
     _move_back_ref(r);
     return 0;
 }
+
+int IOBuf::append_user_data(void* data, size_t size, void (*deleter)(void*), void* user_data) {
+    if (size > 0xFFFFFFFFULL - 100) {
+        LOG(FATAL) << "data_size=" << size << " is too large";
+        return -1;
+    }
+    char* mem = (char*)malloc(sizeof(IOBuf::Block) + sizeof(UserDataExtension));
+    if (mem == NULL) {
+        return -1;
+    }
+    if (deleter == NULL) {
+        deleter = ::free;
+    }
+    IOBuf::Block* b = new (mem) IOBuf::Block((char*)data, size, deleter, user_data);
+    const IOBuf::BlockRef r = { 0, b->cap, b };
+    _move_back_ref(r);
+    return 0;
+}
+
 
 int IOBuf::resize(size_t n, char c) {
     const size_t saved_len = length();
