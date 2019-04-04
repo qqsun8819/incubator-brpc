@@ -1,24 +1,32 @@
+# Bazel BUILD file for brpc.
+
 licenses(["notice"])  # Apache v2
 
 exports_files(["LICENSE"])
 
 load(":bazel/brpc.bzl", "brpc_proto_library")
+#load("@org_tensorflow//third_party/brpc:brpc.bzl", "brpc_proto_library")
+#load("@org_tensorflow//tensorflow/core:platform/default/build_config.bzl", 
+#    "tf_proto_library",
+#    "tf_proto_library_cc")
+ 
 
+package(default_visibility = ["//visibility:public"])
 config_setting(
     name = "with_glog",
-    define_values = {"with_glog": "true"},
+    define_values = {"with_glog": "false"},
     visibility = ["//visibility:public"],
 )
 
 config_setting(
     name = "with_thrift",
-    define_values = {"with_thrift": "true"},
+    define_values = {"with_thrift": "false"},
     visibility = ["//visibility:public"],
 )
 
 config_setting(
     name = "unittest",
-    define_values = {"unittest": "true"},
+    define_values = {"unittest": "false"},
 )
 
 config_setting(
@@ -34,6 +42,8 @@ config_setting(
 )
 
 COPTS = [
+    "-DHAVE_ZLIB=1",
+    "-D_GLIBCXX_PERMIT_BACKWARD_HASH",
     "-DBTHREAD_USE_FAST_PTHREAD_MUTEX",
     "-D__const__=",
     "-D_GNU_SOURCE",
@@ -310,7 +320,7 @@ cc_library(
         "src/butil/third_party/dmg_fp/dtoa.cc",
     ]) + [":config_h"],
     deps = [
-        "@com_google_protobuf//:protobuf",
+"@protobuf_archive//:protobuf_headers",
         "@com_github_gflags_gflags//:gflags",
     ] + select({
         ":with_glog": ["@com_github_google_glog//:glog"],
@@ -422,7 +432,7 @@ cc_library(
     deps = [
         ":butil",
         ":cc_brpc_idl_options_proto",
-        "@com_google_protobuf//:protoc_lib",
+"@protobuf_archive//:protobuf_headers",
     ],
     copts = COPTS,
     linkopts = LINKOPTS,
@@ -435,7 +445,7 @@ brpc_proto_library(
         "src/idl_options.proto",
     ],
     deps = [
-        "@com_google_protobuf//:cc_wkt_protos"
+        "@protobuf_archive//:cc_wkt_protos"
     ],
     visibility = ["//visibility:public"],
 )
@@ -449,10 +459,13 @@ brpc_proto_library(
     include = "src/",
     deps = [
         ":cc_brpc_idl_options_proto",
-        "@com_google_protobuf//:cc_wkt_protos"
+        "@protobuf_archive//:cc_wkt_protos"
     ],
     visibility = ["//visibility:public"],
 )
+
+
+
 
 cc_library(
     name = "brpc",
