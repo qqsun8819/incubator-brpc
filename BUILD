@@ -42,6 +42,8 @@ config_setting(
 )
 
 COPTS = [
+    "-DSSL_CTRL_SET_TLSEXT_HOSTNAME",
+    "-DOPENSSL_NO_DH",
     "-DHAVE_ZLIB=1",
     "-D_GLIBCXX_PERMIT_BACKWARD_HASH",
     "-DBTHREAD_USE_FAST_PTHREAD_MUTEX",
@@ -65,8 +67,6 @@ LINKOPTS = [
     "-lpthread",
     "-ldl",
     "-lz", 
-    "-lssl",
-    "-lcrypto",
 ] + select({
     ":darwin": [
         "-framework CoreFoundation",
@@ -498,6 +498,7 @@ cc_library(
         ":mcpack2pb",
         ":cc_brpc_internal_proto",
         "@com_github_google_leveldb//:leveldb",
+        "@boringssl//:ssl",
     ],
     copts = COPTS,
     linkopts = LINKOPTS,

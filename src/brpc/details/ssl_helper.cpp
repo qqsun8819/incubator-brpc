@@ -182,7 +182,7 @@ static void SSLMessageCallback(int write_p, int version, int content_type,
 static DH* SSLGetDHCallback(SSL* ssl, int exp, int keylen) {
     (void)exp;
     EVP_PKEY* pkey = SSL_get_privatekey(ssl);
-    int type = pkey ? EVP_PKEY_base_id(pkey) : EVP_PKEY_NONE;
+    int type = EVP_PKEY_NONE; //pkey ? EVP_PKEY_base_id(pkey) : EVP_PKEY_NONE;
 
     // The keylen supplied by OpenSSL can only be 512 or 1024.
     // See ssl3_send_server_key_exchange() in ssl/s3_srvr.c
@@ -545,14 +545,14 @@ SSL* CreateSSLSession(SSL_CTX* ctx, SocketId id, int fd, bool server_mode) {
 }
 
 void AddBIOBuffer(SSL* ssl, int fd, int bufsize) {
-    BIO* rbio = BIO_new(BIO_f_buffer());
-    BIO_set_buffer_size(rbio, bufsize);
+    BIO* rbio = BIO_new(BIO_s_mem());
+    //BIO_set_buffer_size(rbio, bufsize);
     BIO* rfd = BIO_new(BIO_s_fd());
     BIO_set_fd(rfd, fd, 0);
     rbio  = BIO_push(rbio, rfd);
 
-    BIO* wbio = BIO_new(BIO_f_buffer());
-    BIO_set_buffer_size(wbio, bufsize);
+    BIO* wbio = BIO_new(BIO_s_mem());
+    //BIO_set_buffer_size(wbio, bufsize);
     BIO* wfd = BIO_new(BIO_s_fd());
     BIO_set_fd(wfd, fd, 0);
     wbio = BIO_push(wbio, wfd);
