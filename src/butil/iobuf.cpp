@@ -1037,8 +1037,7 @@ ssize_t IOBuf::cut_multiple_into_SSL_channel(SSL* ssl, IOBuf* const* pieces,
         } else {
             if (rc < 0) {
                 if (*ssl_error == SSL_ERROR_WANT_WRITE
-                    || (*ssl_error == SSL_ERROR_SYSCALL
-                        && BIO_fd_non_fatal_error(errno) == 1)) {
+                    || (*ssl_error == SSL_ERROR_SYSCALL)) {
                     // Non fatal error, tell caller to write again
                     *ssl_error = SSL_ERROR_WANT_WRITE;
                 } else {
@@ -1057,7 +1056,7 @@ ssize_t IOBuf::cut_multiple_into_SSL_channel(SSL* ssl, IOBuf* const* pieces,
     BIO* wbio = SSL_get_wbio(ssl);
     if (BIO_wpending(wbio) > 0) {
         int rc = BIO_flush(wbio);
-        if (rc <= 0 && BIO_fd_non_fatal_error(errno) == 0) {
+        if (rc <= 0 ) {
             // Fatal error during BIO_flush
             *ssl_error = SSL_ERROR_SYSCALL;
             return rc;
@@ -1740,8 +1739,7 @@ ssize_t IOPortal::append_from_SSL_channel(
         } else {
             if (rc < 0) {
                 if (*ssl_error == SSL_ERROR_WANT_READ
-                    || (*ssl_error == SSL_ERROR_SYSCALL
-                        && BIO_fd_non_fatal_error(errno) == 1)) {
+                    || (*ssl_error == SSL_ERROR_SYSCALL)){
                     // Non fatal error, tell caller to read again
                     *ssl_error = SSL_ERROR_WANT_READ;
                 } else {
