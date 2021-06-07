@@ -55,6 +55,7 @@ config_setting(
 )
 
 COPTS = [
+ "-DSSL_CTRL_SET_TLSEXT_HOSTNAME",
     "-DBTHREAD_USE_FAST_PTHREAD_MUTEX",
     "-D__const__=",
     "-D_GNU_SOURCE",
@@ -346,7 +347,7 @@ cc_library(
         "//conditions:default": [],
     }) + select({
         ":darwin": ["//external:ssl_macos"],
-        "//conditions:default": ["//external:ssl"],
+        "//conditions:default": ["@boringssl//:ssl"],
     }),
     includes = [
         "src/",

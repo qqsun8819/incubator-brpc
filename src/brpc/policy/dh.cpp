@@ -91,7 +91,7 @@ int DHWrapper::copy_shared_key(const void* ppkey, int ppkey_size,
 }
     
 int DHWrapper::do_initialize() {
-    BIGNUM* p = get_rfc2409_prime_1024(NULL);
+    BIGNUM* p = BN_get_rfc3526_prime_1536(NULL);
     if (!p) {
         return -1;
     }

@@ -1849,7 +1849,7 @@ int Server::AddCertificate(const CertInfo& cert) {
     }
     ssl_ctx.ctx->raw_ctx = raw_ctx;
 
-#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
+#ifndef SSL_CTRL_SET_TLSEXT_HOSTNAME
     SSL_CTX_set_tlsext_servername_callback(ssl_ctx.ctx->raw_ctx, SSLSwitchCTXByHostname);
     SSL_CTX_set_tlsext_servername_arg(ssl_ctx.ctx->raw_ctx, this);
 #endif
@@ -1973,7 +1973,7 @@ int Server::ResetCertificates(const std::vector<CertInfo>& certs) {
             return -1;
         }
 
-#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
+#ifndef SSL_CTRL_SET_TLSEXT_HOSTNAME
         SSL_CTX_set_tlsext_servername_callback(ssl_ctx.ctx->raw_ctx, SSLSwitchCTXByHostname);
         SSL_CTX_set_tlsext_servername_arg(ssl_ctx.ctx->raw_ctx, this);
 #endif
@@ -2114,7 +2114,7 @@ int Server::MaxConcurrencyOf(google::protobuf::Service* service,
     return MaxConcurrencyOf(service->GetDescriptor()->full_name(), method_name);
 }
 
-#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
+#ifndef SSL_CTRL_SET_TLSEXT_HOSTNAME
 int Server::SSLSwitchCTXByHostname(struct ssl_st* ssl,
                                    int* al, Server* server) {
     (void)al;
