@@ -247,6 +247,7 @@ public:
     // The user-data can be split and shared by smaller IOBufs and will be
     // deleted using the deleter func when no IOBuf references it anymore.
     int append_user_data(void* data, size_t size, void (*deleter)(void*));
+    int append_user_data(void* data, size_t size, void (*deleter)(void*), void* user_data);
 
     // Resizes the buf to a length of n characters.
     // If n is smaller than the current length, all bytes after n will be
