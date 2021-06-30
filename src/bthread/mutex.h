@@ -46,7 +46,7 @@ class Mutex {
 public:
     typedef bthread_mutex_t* native_handler_type;
     Mutex() {
-        CHECK_EQ(0,bthread_mutex_init(&_mutex, NULL);
+        CHECK_EQ(0,bthread_mutex_init(&_mutex, NULL));
     }
     ~Mutex() { CHECK_EQ(0, bthread_mutex_destroy(&_mutex)); }
     native_handler_type native_handler() { return &_mutex; }
