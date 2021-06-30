@@ -550,14 +550,14 @@ SSL* CreateSSLSession(SSL_CTX* ctx, SocketId id, int fd, bool server_mode) {
 }
 
 void AddBIOBuffer(SSL* ssl, int fd, int bufsize) {
-    BIO* rbio = BIO_new(BIO_f_base64());
-    BIO_set_write_buffer_size(rbio, bufsize);
+    BIO* rbio = BIO_new(BIO_s_mem());
+    //BIO_set_write_buffer_size(rbio, bufsize);
     BIO* rfd = BIO_new(BIO_s_fd());
     BIO_set_fd(rfd, fd, 0);
     rbio  = BIO_push(rbio, rfd);
 
-    BIO* wbio = BIO_new(BIO_f_base64());
-    BIO_set_write_buffer_size(wbio, bufsize);
+    BIO* wbio = BIO_new(BIO_s_mem());
+    //BIO_set_write_buffer_size(wbio, bufsize);
     BIO* wfd = BIO_new(BIO_s_fd());
     BIO_set_fd(wfd, fd, 0);
     wbio = BIO_push(wbio, wfd);
