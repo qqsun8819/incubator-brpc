@@ -169,7 +169,7 @@ static void HandleTrackMeResponse(Controller* cntl, TrackMeResponse* res) {
                 break;
             }
         }
-        if (res->has_new_interval()) {
+        //if (res->has_new_interval()) {
             // We can't fully trust the result from trackme_server which may
             // have bugs. Make sure the reporting interval is not too short or
             // too long
@@ -180,7 +180,7 @@ static void HandleTrackMeResponse(Controller* cntl, TrackMeResponse* res) {
                 s_trackme_interval = new_interval;
                 RPC_VLOG << "Update s_trackme_interval to " << new_interval;
             }
-        }
+        //}
     }
     delete cntl;
     delete res;

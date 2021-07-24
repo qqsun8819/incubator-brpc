@@ -107,7 +107,7 @@ void NsheadPbServiceAdaptor::ProcessNsheadRequest(
         if (controller->Failed()) {
             break;
         }
-        if (meta->has_log_id()) {
+        if (meta->log_id() != 0) {
             controller->set_log_id(meta->log_id());
         }
 

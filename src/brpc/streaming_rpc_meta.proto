@@ -8,23 +8,23 @@
 //
 //   http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing,
+// Unless  by applicable law or agreed to in writing,
 // software distributed under the License is distributed on an
 // "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
 
-syntax="proto2";
+syntax="proto3";
 
 package brpc;
 option java_package="com.brpc";
 option java_outer_classname="StreamingRpcProto";
 
 message StreamSettings {
-    required int64 stream_id = 1;
-    optional bool need_feedback = 2 [default = false];
-    optional bool writable = 3 [default = false];
+     int64 stream_id = 1;
+     bool need_feedback = 2 ;
+     bool writable = 3;
 }
 
 enum FrameType {
@@ -36,13 +36,15 @@ enum FrameType {
 }
 
 message StreamFrameMeta {
-    required int64 stream_id = 1;
-    optional int64 source_stream_id = 2;
-    optional FrameType frame_type = 3;
-    optional bool has_continuation = 4;
-    optional Feedback feedback = 5;
+     int64 stream_id = 1;
+     oneof source_stream_id_optional {
+     int64 source_stream_id = 2;
+     }
+     FrameType frame_type = 3;
+     bool has_continuation = 4;
+     Feedback feedback = 5;
 }
 
 message Feedback {
-    optional int64 consumed_size = 1;
+     int64 consumed_size = 1;
 }

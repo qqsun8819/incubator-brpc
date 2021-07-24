@@ -8,14 +8,14 @@
 //
 //   http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing,
+// Unless  by applicable law or agreed to in writing,
 // software distributed under the License is distributed on an
 // "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
 
-syntax="proto2";
+syntax="proto3";
 option cc_generic_services=true;
 
 package brpc;
@@ -24,8 +24,8 @@ package brpc;
 message TrackMeRequest {
   // the svn revision when baidu-rp being compiled, which will be checked
   // by server to tell if the version contains bugs
-  optional int64 rpc_version = 1;
-  optional string server_addr = 2;    
+   int64 rpc_version = 1;
+   string server_addr = 2;    
 };
 
 enum TrackMeSeverity {
@@ -39,10 +39,10 @@ message TrackMeResponse {
   // Print an ERROR log with error_text when severity=TrackMeFatal
   // Print a WARNING log with error_text when severity=TrackMeWarning
   // Do nothing when severity=TrackMeOk
-  optional TrackMeSeverity severity = 1; 
-  optional string error_text = 2;
+   TrackMeSeverity severity = 1; 
+   string error_text = 2;
   // If this field is set, send trackme requests with this interval.
-  optional int32 new_interval = 3;
+   int32 new_interval = 3;
 };
 
 service TrackMeService {

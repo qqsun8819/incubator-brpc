@@ -8,78 +8,78 @@
 //
 //   http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing,
+// Unless  by applicable law or agreed to in writing,
 // software distributed under the License is distributed on an
 // "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
 
-syntax="proto2";
+syntax="proto3";
 
 package brpc;
 
 message RtmpConnectRequest {
   // The Server application name the client is connected to.
-  optional string app = 1;
+   string app = 1;
 
   // Flash Player version. It is the same string as returned by the
   // ApplicationScript getversion () function.
-  optional string flashVer = 2;
+   string flashVer = 2;
 
   // URL of the source SWF file making the connection. 
-  optional string swfUrl = 3;
+   string swfUrl = 3;
 
   // URL of the Server. It has the following format:
   //   protocol://servername:port/appName/appInstance 
-  optional string tcUrl = 4;
+   string tcUrl = 4;
   
   // True if proxy is being used.
-  optional bool fpad = 5;
+   bool fpad = 5;
 
   // Unknown, copy from SRS.
-  optional double capabilities = 6;
+   double capabilities = 6;
 
   // Indicates what audio codecs the client supports.
-  optional double audioCodecs = 7;
+   double audioCodecs = 7;
 
   // Indicates what video codecs are supported.
-  optional double videoCodecs = 8;
+   double videoCodecs = 8;
 
   // Indicates what special video functions are supported.
-  optional double videoFunction = 9;
+   double videoFunction = 9;
 
   // URL of the web page from where the SWF file was loaded.
-  optional string pageUrl = 10;
+   string pageUrl = 10;
 
   // AMF encoding method.
-  optional double objectEncoding = 11;
+   double objectEncoding = 11;
 
   // True if the client supports multiple streams over one connection.
-  optional bool stream_multiplexing = 12;
+   bool stream_multiplexing = 12;
 }
 
 message RtmpConnectResponse {
-  optional string fmsVer = 1;
-  optional double capabilities = 2;
-  optional double mode = 3;
-  optional bool create_stream_with_play_or_publish = 4;
+   string fmsVer = 1;
+   double capabilities = 2;
+   double mode = 3;
+   bool create_stream_with_play_or_publish = 4;
 }
 
 message RtmpPlay2Options {
-  optional double len = 1;
-  optional double offset = 2;
-  optional string oldStreamName = 3;
-  optional double start = 4;
-  optional string streamName = 5;
-  optional string transition = 6;
+   double len = 1;
+   double offset = 2;
+   string oldStreamName = 3;
+   double start = 4;
+   string streamName = 5;
+   string transition = 6;
 }
 
 message RtmpInfo {
-  optional string code = 1;
-  optional string level = 2;
-  optional string description = 3;
-  optional double objectEncoding = 4; // used in connect response
+   string code = 1;
+   string level = 2;
+   string description = 3;
+   double objectEncoding = 4; // used in connect response
 }
 
 message RtmpEmptyObject {}

@@ -351,7 +351,7 @@ void ProcessHuluRequest(InputMessageBase* msg_base) {
         sample->meta.set_compress_type(req_cmp_type);
         sample->meta.set_protocol_type(PROTOCOL_HULU_PBRPC);
         sample->meta.set_user_data(meta.user_data());
-        if (meta.has_user_message_size()
+        if (meta.user_message_size() != 0
             && static_cast<size_t>(meta.user_message_size()) < msg->payload.size()) {
             size_t attachment_size = msg->payload.size() - meta.user_message_size();
             sample->meta.set_attachment_size(attachment_size);
@@ -373,7 +373,7 @@ void ProcessHuluRequest(InputMessageBase* msg_base) {
     int64_t correlation_id = meta.correlation_id();
     const bool security_mode = server->options().security_mode() &&
                                socket->user() == server_accessor.acceptor();
-    if (meta.has_log_id()) {
+    if (meta.log_id() != 0) {
         cntl->set_log_id(meta.log_id());
     }
     cntl->set_request_compress_type(req_cmp_type);
@@ -387,11 +387,10 @@ void ProcessHuluRequest(InputMessageBase* msg_base) {
         .set_begin_time_us(msg->received_us())
         .move_in_server_receiving_sock(socket_guard);
 
-    if (meta.has_user_data()) {
-        cntl->set_request_user_data(meta.user_data());
-    }
+    cntl->set_request_user_data(meta.user_data());
+    
 
-    if (meta.has_user_defined_source_addr()) {
+    if (meta.user_defined_source_addr() != 0) {
         cntl->set_request_source_addr(meta.user_defined_source_addr());
     }
     
@@ -402,7 +401,7 @@ void ProcessHuluRequest(InputMessageBase* msg_base) {
     }
 
     Span* span = NULL;
-    if (IsTraceable(meta.has_trace_id())) {
+    if (IsTraceable(meta.trace_id() != 0)) {
         span = Span::CreateServerSpan(
             meta.trace_id(), meta.span_id(), meta.parent_span_id(),
             msg->base_real_us());
@@ -475,7 +474,7 @@ void ProcessHuluRequest(InputMessageBase* msg_base) {
         const int reqsize = msg->payload.length();
         butil::IOBuf req_buf;
         butil::IOBuf* req_buf_ptr = &msg->payload;
-        if (meta.has_user_message_size()) {
+        if (meta.user_message_size() != 0) {
             msg->payload.cutn(&req_buf, meta.user_message_size());
             req_buf_ptr = &req_buf;
             cntl->request_attachment().swap(msg->payload);
@@ -588,7 +587,7 @@ void ProcessHuluResponse(InputMessageBase* msg_base) {
         // Parse response message iff error code from meta is 0
         butil::IOBuf res_buf;
         butil::IOBuf* res_buf_ptr = &msg->payload;
-        if (meta.has_user_message_size()) {
+        if (meta.user_message_size() != 0) {
             msg->payload.cutn(&res_buf, meta.user_message_size());
             res_buf_ptr = &res_buf;
             cntl->response_attachment().swap(msg->payload);
@@ -608,13 +607,13 @@ void ProcessHuluResponse(InputMessageBase* msg_base) {
         } // else silently ignore the response.
         HuluController* hulu_controller = dynamic_cast<HuluController*>(cntl);
         if (hulu_controller) {
-            if (meta.has_user_defined_source_addr()) {
+            if (meta.user_defined_source_addr() != 0) {
                 hulu_controller->set_response_source_addr(
                             meta.user_defined_source_addr());
             }
-            if (meta.has_user_data()) {
+            //if (meta.has_user_data()) {
                 hulu_controller->set_response_user_data(meta.user_data());
-            }
+            //}
         }
     }
     // Unlocks correlation_id inside. Revert controller's

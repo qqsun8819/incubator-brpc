@@ -108,7 +108,7 @@ ParseResult ParseStreamingMessage(butil::IOBuf* source,
                             && fm.frame_type() != FRAME_TYPE_CLOSE
                             && fm.frame_type() != FRAME_TYPE_FEEDBACK)
                    << "Fail to find stream=" << fm.stream_id();
-            if (fm.has_source_stream_id()) {
+            if (fm.source_stream_id_optional_case() ==StreamFrameMeta::SourceStreamIdOptionalCase::kSourceStreamId) {
                 SendStreamRst(socket, fm.source_stream_id());
             }
             break;

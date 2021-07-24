@@ -340,10 +340,10 @@ void ProcessRpcRequest(InputMessageBase* msg_base) {
     ControllerPrivateAccessor accessor(cntl.get());
     const bool security_mode = server->options().security_mode() &&
                                socket->user() == server_accessor.acceptor();
-    if (request_meta.has_log_id()) {
+    if (request_meta.log_id() != 0) {
         cntl->set_log_id(request_meta.log_id());
     }
-    if (request_meta.has_request_id()) {
+    if (request_meta.request_id() != "") {
         cntl->set_request_id(request_meta.request_id());
     }
     cntl->set_request_compress_type((CompressType)meta.compress_type());
@@ -367,7 +367,7 @@ void ProcessRpcRequest(InputMessageBase* msg_base) {
     }
 
     Span* span = NULL;
-    if (IsTraceable(request_meta.has_trace_id())) {
+    if (IsTraceable(request_meta.trace_id() != 0)) {
         span = Span::CreateServerSpan(
             request_meta.trace_id(), request_meta.span_id(),
             request_meta.parent_span_id(), msg->base_real_us());
@@ -455,7 +455,7 @@ void ProcessRpcRequest(InputMessageBase* msg_base) {
         const int reqsize = static_cast<int>(msg->payload.size());
         butil::IOBuf req_buf;
         butil::IOBuf* req_buf_ptr = &msg->payload;
-        if (meta.has_attachment_size()) {
+        if (meta.attachment_size() != 0) {
             if (reqsize < meta.attachment_size()) {
                 cntl->SetFailed(EREQUEST,
                     "attachment_size=%d is larger than request_size=%d",
@@ -587,7 +587,7 @@ void ProcessRpcResponse(InputMessageBase* msg_base) {
         butil::IOBuf res_buf;
         const int res_size = msg->payload.length();
         butil::IOBuf* res_buf_ptr = &msg->payload;
-        if (meta.has_attachment_size()) {
+        if (meta.attachment_size() != 0) {
             if (meta.attachment_size() > res_size) {
                 cntl->SetFailed(
                     ERESPONSE,

@@ -81,7 +81,7 @@ void PublicPbrpcServiceAdaptor::ParseNsheadMeta(
     }
     out_meta->set_full_method_name(sp->method->full_name());
     out_meta->set_correlation_id(body.id());
-    if (head.has_log_id()) {
+    if (head.log_id() != 0) {
         out_meta->set_log_id(head.log_id());
     }
     if (head.compress_type() == COMPRESS_TYPE) {

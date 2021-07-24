@@ -2389,13 +2389,13 @@ bool RtmpChunkStream::OnConnect(const RtmpMessageHeader& mh,
         WriteAMFString((!error_text.empty() ? RTMP_AMF0_COMMAND_ERROR :
                         RTMP_AMF0_COMMAND_RESULT), &ostream);
         WriteAMFUint32(1, &ostream);
-        if (!response.has_fmsver()) {
+        if (response.fmsver() == "") {
             response.set_fmsver("FMS/" RTMP_SIG_FMS_VER);
         }
-        if (!response.has_capabilities()) {
+        if (response.capabilities() == 0) {
             response.set_capabilities(127);
         }
-        if (!response.has_mode()) {
+        if (response.mode() == 0) {
             response.set_mode(1);
         }
         response.set_create_stream_with_play_or_publish(true);

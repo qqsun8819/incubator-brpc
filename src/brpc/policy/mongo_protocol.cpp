@@ -76,7 +76,7 @@ void SendMongoResponse::Run() {
     butil::IOBuf res_buf;
     if (cntl.Failed()) {
         adaptor->SerializeError(res.header().response_to(), &res_buf);
-    } else if (res.has_message()) {
+    } else if (res.message() != "") {
         mongo_head_t header = {
             res.header().message_length(),
             res.header().request_id(),

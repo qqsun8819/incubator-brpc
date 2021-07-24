@@ -15,14 +15,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
-syntax="proto2";
+syntax="proto3";
 // mcpack2pb - Make protobuf be front-end of mcpack/compack
 
 import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.FileOptions {
   // True to generate mcpack parsing/serializing code
-  optional bool idl_support = 91000;
+  bool idl_support = 91000;
 }
 
 enum ConvertibleIdlType {
@@ -44,11 +44,11 @@ enum ConvertibleIdlType {
 
 extend google.protobuf.FieldOptions {
   // Mark the idl-type which is inconsistent with proto-type.
-  optional ConvertibleIdlType idl_type = 91001;
+   ConvertibleIdlType idl_type = 91001;
 
-  // Mark the non-optional() vector/array in idl.
-  optional int32 idl_on = 91002;
+  // Mark the non-() vector/array in idl.
+   int32 idl_on = 91002;
 
   // Use this name as the field name for packing instead of the one in proto.
-  optional string idl_name = 91003;
+   string idl_name = 91003;
 }
